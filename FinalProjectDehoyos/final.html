@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="A simple baked chicken parmesan recipe with ingredients, instructions, and personal cooking photos.">
+  <title>Baked Chicken Parmesan | My Favorite Recipe</title>
+  <style>
+    :root {
+      --cream: #fffaf3;
+      --paper: #ffffff;
+      --ink: #29352d;
+      --muted: #59675d;
+      --red: #a83c2e;
+      --green: #456b4a;
+      --line: #e9e2d7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #f0e9df;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(100% - 36px, 1000px);
+      margin: auto;
+    }
+
+    .top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-family: Georgia, serif;
+      color: var(--red);
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+    }
+
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: .92rem;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--red);
+      text-decoration: underline;
+    }
+
+    main {
+      padding-bottom: 55px;
+    }
+
+    .hero {
+      padding: 15px 0 30px;
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .79rem;
+      font-weight: bold;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      margin: 14px 0 18px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+      margin: 0 0 14px;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .intro {
+      font-size: 1.11rem;
+      color: #435146;
+      max-width: 710px;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--paper);
+      padding: 9px 16px;
+      font-size: .92rem;
+    }
+
+    .featured-photo {
+      margin: 0 0 10px;
+    }
+
+    .featured-photo img {
+      display: block;
+      width: 100%;
+      max-height: 430px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .stat b {
+      color: var(--green);
+    }
+
+    .section {
+      padding: 38px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: minmax(240px, .9fr) minmax(0, 1.1fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 25px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+    }
+
+    ul,
+    ol {
+      padding-left: 24px;
+    }
+
+    li {
+      padding: 5px 0 5px 4px;
+    }
+
+    ol li::marker {
+      color: var(--red);
+      font-weight: bold;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .photo {
+      border: 2px dashed #cbb8a7;
+      border-radius: 12px;
+      background: #f3eee7;
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 15px;
+      color: #70685e;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .photo img:not([src]),
+    .photo img[src=""] {
+      display: none;
+    }
+
+    .placeholder {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .camera {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: .9rem;
+    }
+
+    .source {
+      background: #f0e9df;
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-wrap: anywhere;
+    }
+
+    a {
+      color: #8d352b;
+    }
+
+    footer {
+      background: #29352d;
+      color: #f7f3eb;
+      padding: 22px 0;
+      font-size: .9rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media(max-width:700px) {
+      .two {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .photos {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 44px 0 28px;
+      }
+
+      .photo {
+        aspect-ratio: 16/10;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="#home">My Kitchen Recipe</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#ingredients">Ingredients</a>
+        <a href="#directions">Directions</a>
+        <a href="#photos">My Photos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="wrap">
+    <figure class="featured-photo">
+      <img src="Crispy Chicken Parmesan with Marinara Spaghetti.png"
+        alt="Baked Chicken Parmesan with marinara and melted mozzarella">
+    </figure>
+    <section class="hero" id="about">
+    </section>
+    <section class="section two"></section>
+    <div class="eyebrow">A family favorite</div>
+    <h1>Baked Chicken Parmesan</h1>
+    <p class="intro">Chicken parmesan is one of my favorite comfort-food dinners. I love the crispy breading, marinara
+      sauce, and melted mozzarella cheese. This version is baked instead of fried, making it a lighter option that still
+      tastes like a classic. It's also an easy family meal to pair with pasta, salad, or vegetables.</p>
+    <div class="stats" aria-label="Recipe details">
+      <div class="stat"><b>Servings:</b> 4</div>
+      <div class="stat"><b>Prep:</b> 20 minutes</div>
+      <div class="stat"><b>Cook:</b> about 35 minutes</div>
+      <div class="stat"><b>Oven:</b> 425°F</div>
+    </div>
+    </section>
+
+    <section class="section two" aria-label="Recipe ingredients and cooking directions">
+      <div class="panel" id="ingredients">
+        <h2>Ingredients</h2>
+        <p class="note">Gather everything before starting.</p>
+        <ul>
+          <li>1½ lb boneless, skinless chicken breasts</li>
+          <li>½ cup whole wheat flour</li>
+          <li>3 large eggs</li>
+          <li>1 cup unseasoned whole wheat breadcrumbs</li>
+          <li>½ cup grated Parmesan cheese</li>
+          <li>¼ tsp black pepper</li>
+          <li>2 tsp dried basil</li>
+          <li>2 tsp dried parsley</li>
+          <li>1½ cups marinara sauce</li>
+          <li>1½ cups shredded mozzarella cheese</li>
+        </ul>
+      </div>
+      <div id="directions">
+        <h2>Step-by-Step Directions</h2>
+        <ol>
+          <li>Slice the chicken breasts lengthwise to create thinner cutlets. Place between plastic wrap and gently
+            pound to about ¼-inch thickness.</li>
+          <li>Preheat the oven to <b>425°F</b>. Line a baking sheet with parchment paper.</li>
+          <li>Prepare three shallow bowls: one with flour, one with whisked eggs, and one with breadcrumbs mixed with
+            Parmesan, pepper, basil, and parsley.</li>
+          <li>Coat each chicken cutlet in flour, dip it in egg, and then press it into the seasoned breadcrumb mixture.
+          </li>
+          <li>Place the breaded chicken on the baking sheet. Bake for <b>15 minutes</b>, flip, and bake about <b>15 more
+              minutes</b>. Check that the center reaches <b>165°F</b>.</li>
+          <li>Top each cutlet with marinara sauce and mozzarella cheese. Broil for approximately <b>2 minutes</b>,
+            watching closely until the cheese melts.</li>
+          <li>Serve hot with pasta, salad, or your favorite vegetables. Enjoy!</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="photos">
+      <h2>Photos From My Kitchen</h2>
+      <p class="note">Three spots are ready for your own pictures. Until you add them, these remain blank placeholders.
+      </p>
+      <div class="photos">
+        <figure>
+          <div class="photo">
+            <span class="placeholder"><span class="camera" aria-hidden="true">▧</span><small>Preparation</small></span>
+            <img src="prep.jpg" alt="Preparation">
+          </div>
+          <figcaption>1. Preparation</figcaption>
+        </figure>
+        <figure>
+          <div class="photo">
+            <span class="placeholder"><span class="camera" aria-hidden="true">▧</span><small>Before
+                Boiling</small></span>
+            <img src="CrustedChickenCutlets.png" alt="Preparing and breading the chicken cutlets">
+          </div>
+          <figcaption>2.Before Broiling</figcaption>
+        </figure>
+        <figure>
+          <div class="photo">
+            <span class="placeholder"><span class="camera" aria-hidden="true">▧</span><small>The Makers</small></span>
+            <img src="TheMakers.png" alt="Meet the Makers">
+          </div>
+          <figcaption>3. Serving Suggestion</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="source">
+      <h2>Recipe Source</h2>
+      <div class="source">
+        <p>This recipe is adapted from Liz Marino's <i>Healthy Baked Chicken Parmesan</i> on The Clean Eating Couple
+          (2024).</p>
+        <p><a href="https://thecleaneatingcouple.com/baked-chicken-parmesan/" target="_blank"
+            rel="noopener noreferrer">View the original recipe</a></p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <p>My Favorite Recipe • Baked Chicken Parmesan • Created by Jayme DeHoyos</p>
+    </div>
+  </footer>
+</body>
+</html>
